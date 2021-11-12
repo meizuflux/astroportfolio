@@ -1,0 +1,18 @@
+---
+import BaseLayout from "$/layouts/BaseLayout";
+import { getReadingTime } from "$/utils";
+
+const { content } = Astro.props;
+console.log(content.tags)
+---
+<BaseLayout title={content.title}>
+    <h1>{content.title}</h1>
+    <p>{content.description}</p>
+    {content.tags.map(t => {
+        <span><a href={`/tag/${t}`}>{t}</a></span>
+    })}
+    <p>{getReadingTime(content.astro.source)} minute read</p>
+    <article>
+        <slot />
+    </article>
+</BaseLayout>
