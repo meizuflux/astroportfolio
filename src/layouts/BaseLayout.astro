@@ -1,18 +1,14 @@
 ---
 const { title } = Astro.props;
 ---
-<html>
-  <head>
+<head>
     <title>meizuflux | {title}</title>
-  </head>
-  <body>
-    <!-- Adds a navigation bar to every page. -->
-    <nav>
-      <a href="/">Home</a>
-      <a href="/posts">Blog</a>
-      <a href="/projects">Projects</a>
-    </nav>
-    <!-- slot: your page content will be injected here. -->
+</head>
+<nav>
+    <a href="/">Home</a>
+    <a href="/posts">Blog</a>
+    <a href="/projects">Projects</a>
+</nav>
+<main>
     <slot />
-  </body>
-</html>
+</main>

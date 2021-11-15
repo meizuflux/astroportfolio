@@ -1,26 +1,7 @@
 ---
-// Component Imports
-import Counter from '../components/Counter.tsx'
-
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+import BaseLayout from "/layouts/BaseLayout.astro"
+import Counter from '$/components/Counter.tsx'
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
-
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  </head>
-  <body>
-    <main>
-      <Counter client:visible>
-        <h1>Hello Preact!</h1>
-      </Counter>
-    </main>
-  </body>
-</html>
+<BaseLayout title="Home">
+    <Counter client:visible />
+</BaseLayout>
