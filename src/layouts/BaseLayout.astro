@@ -1,14 +1,20 @@
 ---
-const { title } = Astro.props;
+import AddPrism from "$/components/Code.tsx"
+const { title, code } = Astro.props;
 ---
-<head>
-    <title>meizuflux | {title}</title>
-</head>
-<nav>
-    <a href="/">Home</a>
-    <a href="/posts">Blog</a>
-    <a href="/projects">Projects</a>
-</nav>
-<main>
-    <slot />
-</main>
+<html>
+    <head>
+        <title>meizuflux | {title}</title>
+        <AddPrism value={code} />
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/posts">Blog</a>
+            <a href="/projects">Projects</a>
+        </nav>
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>

@@ -8,10 +8,16 @@ tags:
     - idk
 created: date?
 modified: date?
+code: true
 ---
 
 testing: also this is made by {frontmatter.description}
 
-```js
-console.log("hello")
+
+# testing lol
+### idk
+
+
+```rust
+println("hello");
 ```
