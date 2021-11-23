@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",
-    "cssnano": "^5.0.10",
     "rehype-autolink-headings": "^6.1.0",
     "remark-gfm": "^3.0.1"
   }
