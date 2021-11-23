@@ -1,11 +1,4 @@
-# Astro + Preact Example
+cool
 
-```
-npm init astro -- --template framework-preact
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/snowpackjs/astro/tree/latest/examples/framework-preact)
-
-This example showcases Astro working with [Preact](https://preactjs.com).
-
-Write your Preact components as `.jsx` or `.tsx` files in your project.
+fuse.js for search
+tailwind for styling

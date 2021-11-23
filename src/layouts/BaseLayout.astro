@@ -1,12 +1,9 @@
 ---
-import AddPrism from "$/components/Code.tsx"
+import Head from "$/components/Head.astro"
 const { title, code } = Astro.props;
 ---
 <html>
-    <head>
-        <title>meizuflux | {title}</title>
-        <AddPrism value={code} />
-    </head>
+    <Head title={title} addCode={code} />
     <body>
         <nav>
             <a href="/">Home</a>

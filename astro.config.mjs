@@ -9,17 +9,18 @@ import astroRemark from '@astrojs/markdown-remark';
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
-  // Enable the Preact renderer to support Preact JSX components.
-  renderers: ['@astrojs/renderer-preact'],
-  markdownOptions: {
-    render: [
-      astroRemark,
-      {
-        remarkPlugins: ["remark-gfm"],
-        rehypePlugins: [
-          ['rehype-autolink-headings', { behavior: 'prepend' }],
+    buildOptions: {
+        site: "https://meizuflux.com"
+    },
+    renderers: ['@astrojs/renderer-preact'],
+    markdownOptions: {
+        render: [
+            astroRemark, {
+                remarkPlugins: ["remark-gfm"],
+                rehypePlugins: [
+                    ['rehype-autolink-headings', { behavior: 'prepend' }],
+                ],
+            },
         ],
-      },
-    ],
-  },
+    },
 });

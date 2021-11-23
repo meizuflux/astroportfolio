@@ -1,0 +1,12 @@
+---
+const { title, addCode } = Astro.props
+---
+<head>
+    <title>meizuflux | {title}</title>
+    {addCode === true &&
+        <link
+            rel="stylesheet"
+            href={Astro.resolve("../styles/prism/atom-dark.css")}
+        >
+    }
+</head>

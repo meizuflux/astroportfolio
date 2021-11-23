@@ -1,0 +1,10 @@
+---
+import { getReadingTime } from "$/utils"
+const { data } = Astro.props;
+---
+<div>
+    <h2><a href={data.url} title={data.title}>{data.title}</a></h2>
+    {data.tags.map(t => (<span><a href={`/tag/${t}`}>{t}</a></span>))}
+    <p>{getReadingTime(data.astro.source)} min</p>
+    <p>{data.description}</p>
+</div>

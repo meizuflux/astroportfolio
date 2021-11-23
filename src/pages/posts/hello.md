@@ -8,6 +8,7 @@ tags:
     - idk
 created: date?
 modified: date?
+draft: false
 code: true
 ---
 
@@ -18,6 +19,8 @@ testing: also this is made by {frontmatter.description}
 ### idk
 
 
-```rust
-println("hello");
+```ts
+const add = (a, b) => {
+    return a + b
+}
 ```
