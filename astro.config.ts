@@ -1,4 +1,5 @@
 import astroRemark from '@astrojs/markdown-remark';
+import WindiCSS from "vite-plugin-windicss"
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
@@ -6,7 +7,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
         site: "https://meizuflux.com",
         pageUrlFormat: 'file'
     },
-    renderers: ['@astrojs/renderer-preact'],
+    renderers: [],
     markdownOptions: {
         render: [
             astroRemark, {
@@ -20,4 +21,9 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     devOptions: {
         trailingSlash: "ignore"
     },
+    vite: {
+        plugins: [
+            WindiCSS()
+        ]
+    }
 });

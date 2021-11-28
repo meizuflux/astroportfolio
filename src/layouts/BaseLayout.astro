@@ -3,7 +3,14 @@ import Head from "$/components/Head.astro"
 const { title, code } = Astro.props;
 ---
 <html>
-    <Head title={title} addCode={code} />
+    <Head title={title} />
+    <link rel="stylesheet" href={Astro.resolve('../styles/main.css')}>
+    <style>
+        body {
+            background: hsl(220, 13%, 18%);
+            color: hsl(220, 14%, 71%);
+        }
+    </style>
     <body>
         <nav>
             <a href="/">Home</a>

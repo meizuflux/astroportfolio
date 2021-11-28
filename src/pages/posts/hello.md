@@ -9,7 +9,6 @@ tags:
 created: date?
 modified: date?
 draft: false
-code: true
 ---
 
 testing: also this is made by {frontmatter.description}
