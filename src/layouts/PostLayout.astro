@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "$/layouts/BaseLayout.astro";
-import { getReadingTime } from "$/utils";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getReadingTime } from "../utils";
 
 const { content } = Astro.props;
-const {title, description, tags, code, astro} = content;
+const {title, description, tags, astro} = content;
 ---
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
     <h1>{title}</h1>
     <p>{description}</p>
     <p>tags: {tags.map(t => (<span><a href={`/tag/${t}`}>{t}</a></span>))}</p>

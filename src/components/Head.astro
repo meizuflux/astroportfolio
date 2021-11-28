@@ -1,8 +1,26 @@
 ---
-const { title } = Astro.props
+const { title, description } = Astro.props
 ---
-<head>
-    <title>meizuflux | {title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href={Astro.resolve("../styles/prism/atom-dark.css")}>
-</head>
+<meta charset="UTF-8">
+<title>meizuflux | {title}</title>
+<meta name="description" content={description}>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href={Astro.resolve("../styles/prism/atom-dark.css")}>
+<link rel="stylesheet" href={Astro.resolve('../styles/tailwind.css')}>
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for meizuflux.com" href="/posts/feed.xml" />
+<style>
+    body {
+        background: hsl(220, 13%, 18%);
+        color: hsl(220, 14%, 71%);
+    }
+</style>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MW6YQFHTF0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MW6YQFHTF0');
+</script>

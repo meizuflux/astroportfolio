@@ -1,6 +1,6 @@
 ---
 setup: |
-    import Layout from "$/layouts/PostLayout.astro"
+    import Layout from "../../layouts/PostLayout.astro"
 title: Hello There!
 description: ur mom
 tags:

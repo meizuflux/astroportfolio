@@ -1,5 +1,10 @@
-import astroRemark from '@astrojs/markdown-remark';
-import WindiCSS from "vite-plugin-windicss"
+// Full Astro Configuration API Documentation:
+// https://docs.astro.build/reference/configuration-reference
+
+// @type-check enabled!
+// VSCode and other TypeScript-enabled text editors will provide auto-completion,
+// helpful tooltips, and warnings if your exported object is invalid.
+// You can disable this by removing "@ts-check" and `@type` comments below.
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
@@ -9,8 +14,8 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     },
     renderers: [],
     markdownOptions: {
-        render: [
-            astroRemark, {
+        parser: [
+            "@astrojs/markdown-remark", {
                 remarkPlugins: ["remark-gfm"],
                 rehypePlugins: [
                     ['rehype-autolink-headings', { behavior: 'prepend' }],
@@ -21,9 +26,4 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     devOptions: {
         trailingSlash: "ignore"
     },
-    vite: {
-        plugins: [
-            WindiCSS()
-        ]
-    }
 });

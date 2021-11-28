@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "$/layouts/BaseLayout.astro"
-import PostPreview from "$/components/PostPreview.astro"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import PostPreview from "../../components/PostPreview.astro"
 
 export async function getStaticPaths({ rss, paginate }) {
     const allPosts = Astro.fetchContent("./*.md");
@@ -19,7 +19,7 @@ export async function getStaticPaths({ rss, paginate }) {
             modified: item.modified,
         })),
         dest: "/posts/feed.xml",
-  });
+    });
 
     return paginate(sortedPosts, {
         pageSize: 20
@@ -28,9 +28,9 @@ export async function getStaticPaths({ rss, paginate }) {
 
 const { page } = Astro.props;
 ---
-<BaseLayout title="Posts"/>
+<BaseLayout title="Posts">
     <a href="/posts/all-posts">View All Posts</a>
-    {page.data.map((post) => (
+    {page.data.map(post => (
         <PostPreview data={post} />
     ))}
 </BaseLayout>
