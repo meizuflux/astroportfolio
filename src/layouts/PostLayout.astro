@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getReadingTime } from "../utils";
+import { getReadingTime, formatDate } from "../utils";
 
 const { content } = Astro.props;
-const {title, description, tags, astro} = content;
+const {title, description, tags, created, modified, astro} = content;
 ---
 <BaseLayout title={title} description={description}>
     <h1>{title}</h1>
+    <p>{formatDate(created)} last modified {formatDate(modified)}</p>
     <p>{description}</p>
     <p>tags: {tags.map(t => (<span><a href={`/tag/${t}`}>{t}</a></span>))}</p>
     <p>{getReadingTime(astro.source)} minute read</p>

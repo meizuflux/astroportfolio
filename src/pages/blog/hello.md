@@ -6,8 +6,8 @@ description: ur mom
 tags:
     - testing
     - idk
-created: date?
-modified: date?
+created: 2021-11-25
+modified: 2021-11-26
 draft: false
 ---
 

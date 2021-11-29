@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import { formatDate } from "../../utils"
+
+const allPosts = Astro.fetchContent("./*.md");
+const sortedPosts = allPosts.sort((a, b) => a.modified - b.modified);
+---
+<BaseLayout title="Blog">
+    <h1>Blog</h1>
+
+    <ul>
+        {sortedPosts.map(p => (
+            <li>
+                <a href={p.url}>{p.title}</a> — <time datetime>{formatDate(p.modified)}</time>
+            </li>
+        ))}
+    </ul>
+</BaseLayout>
+

@@ -5,12 +5,18 @@ const { title, description } = Astro.props
 <title>meizuflux | {title}</title>
 <meta name="description" content={description}>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href={Astro.resolve("../styles/prism/atom-dark.css")}>
-<link rel="stylesheet" href={Astro.resolve('../styles/tailwind.css')}>
+
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for meizuflux.com" href="/posts/feed.xml" />
+
+<link rel="stylesheet" href={Astro.resolve("../styles/normalize.css")}>
+<link rel="stylesheet" href={Astro.resolve("../styles/prism/atom-dark.css")}>
+<link rel="stylesheet" href={Astro.resolve('../styles/classless/sakura.css')}>
+
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+
     body {
-        background: hsl(220, 13%, 18%);
-        color: hsl(220, 14%, 71%);
+      font-size: 1.8rem;
+      font-family: 'Zilla Slab', serif;
     }
 </style>
