@@ -1,19 +1,29 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
-import { formatDate } from "../../utils"
+import { formatDate, sortByYear } from "../../utils"
 
 const allPosts = Astro.fetchContent("./*.md");
-const sortedPosts = allPosts.sort((a, b) => a.modified - b.modified);
----
-<BaseLayout title="Blog">
-    <h1>Blog</h1>
+const sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
 
-    <ul>
-        {sortedPosts.map(p => (
-            <li>
-                <a href={p.url}>{p.title}</a> — <time datetime>{formatDate(p.modified)}</time>
-            </li>
-        ))}
-    </ul>
+const posts = sortByYear(sortedPosts)
+---
+<style>
+ul {margin-left: 0; padding-left: 50px;}
+
+</style>
+<BaseLayout title="Blog">
+    <h1 style="text-align: center;">Blog</h1>
+
+    {(Object.keys(posts).sort((a, b) => b-a)).map((key, index) => (
+        <h2>{key}</h2>
+        <ul>
+            {posts[key].map(p => (
+                <li>
+                    <a href={p.url}>{p.title}</a> — <time datetime>{formatDate(p.modified)}</time>
+                </li>
+            ))}
+        </ul>
+    ))}
+
 </BaseLayout>
 

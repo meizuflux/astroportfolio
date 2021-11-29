@@ -12,7 +12,6 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
         site: "https://meizuflux.com",
         pageUrlFormat: 'file'
     },
-    renderers: [],
     markdownOptions: {
         parser: [
             "@astrojs/markdown-remark", {
