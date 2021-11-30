@@ -1,0 +1,38 @@
+---
+const links = [
+    {
+        "name": "stats",
+        "url": "https://meizuflux.goatcounter.com"
+    },
+    {
+        "name": "rss (not working)",
+        "url": "/blog/feed.xml"
+    }
+]
+const socials = [
+    {
+        "name": "github",
+        "url": "https://github.com/meizuflux"
+    },
+    {
+        "name": "email",
+        "url": "mailto:hello@meizuflux.com"
+    },
+    {
+        "name": "discord",
+        "url": "https://discord.com/users/809587169520910346"
+    },
+    {
+        "name": "youtube",
+        "url": "https://www.youtube.com/channel/UCymZdclkcHqM1SbCesRnkYg"
+    }
+]
+---
+<footer>
+    copyright 2021 - {new Date().getFullYear()} meizuflux
+    <br />
+    misc [ {links.map((p, i) => (<a>{p.name}</a>{i < (socials.length - 1) ? ", " : ''}))} ]
+    <br />
+    socials [ {socials.map((p, i) => (<a>{p.name}</a>{i < (socials.length - 1) ? ", " : ''}))} ]
+
+</footer>

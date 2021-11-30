@@ -6,10 +6,6 @@ const { content } = Astro.props;
 const {title, description, tags, created, modified, astro} = content;
 ---
 <style>
-    .centered {
-        text-align: center;
-    }
-
     .h-stack {
         display: flex;
         justify-content: space-between;
@@ -17,14 +13,14 @@ const {title, description, tags, created, modified, astro} = content;
 </style>
 
 <BaseLayout title={title} description={description}>
-    <div class="centered">
-        <h1>{title}</h1>
-        <p>{description}</p>
+    <div style="text-align: center;">
+        <h1 style="margin-bottom: 0.5rem">{title}</h1>
+        <p style="margin-bottom: 0">{description}</p>
     </div>
     
     <div class="h-stack">
-        <p>Uploaded {formatDate(created)} (Last modified {formatDate(modified)})</p>
-        <p>{getReadingTime(astro.source)} minute read</p>
+        <p>{formatDate(created)} (Modified {formatDate(modified)})</p>
+        <p>{getReadingTime(astro.source)} min read</p>
     </div>
 
     <article>

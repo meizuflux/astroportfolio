@@ -7,7 +7,7 @@ export const getReadingTime = (text: String): Number => {
 export const formatDate = (date: Date): string => {
     const d = new Date(date)
     let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
-    let mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
+    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
     let da = new Intl.DateTimeFormat('en', { day: 'numeric' }).format(d);
 
     return `${mo} ${da}, ${ye}`
