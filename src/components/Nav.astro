@@ -1,10 +1,13 @@
+---
+const links = [
+    {"name": "about", "url": "/about"},
+    { "name": "projects", "url": "/projects"},
+    { "name": "blog", "url": "/blog"}
+]
+---
 <header>
     <nav>
         <a href="/">meizuflux</a>
-        [
-            <a href="/about">about</a>,
-            <a href="/projects"> projects</a>,
-            <a href="/blog"> blog</a>
-        ]
+        [ {links.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (socials.length - 1) ? ", " : ''}))} ]
     </nav>
 </header>
