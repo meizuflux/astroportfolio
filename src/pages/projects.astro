@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+
+const projects = {
+    "websites": [
+        {
+            "name": "this website",
+            "url": "https://meizuflux.com",
+            "repo": "https://github.com/meizuflux/astroportfolio",
+            "description": "built using Astrojs and Sakura CSS with a custom theme cause I can't style at all"
+        },
+        {
+            "name": "my url shortner",
+            "url": "https://mzf.one",
+            "repo": "https://github.com/meizuflux/mzf.one",
+            "description": "custom url shortner that I had some fun building. Frontend is built with SolidJS and Bootstrap, while the backend is made with Starlette and SQLite"
+        }
+    ],
+    "others": [
+        {
+            "name": "FastAPI Example",
+            "url": null,
+            "repo": "https://github.com/meizuflux/simple-fastapi",
+            "description": "Had some fun learning all the semantics of FastAPI"
+        }
+    ]
+}
+---
+<BaseLayout title="Projects" description="Various projects that I have worked on.">
+    <h1 style="text-align: center">my projects</h1>
+    <p>Various projects and things that I've made. They're most likely on my [GitHub](https://github.com/meizuflux).</p>
+
+    {Object.keys(projects).map(key => (
+        <h2>{key}</h2>
+        <ul>
+            {projects[key].map(p => (
+                <li>
+                    {p.url ? <a href={p.url}>{p.name}</a> : p.name} [{p.repo ? <a href={p.repo}>Repo</a> : "Private"}] — {p.description}
+                </li>
+            ))}
+        </ul>
+    ))}
+</BaseLayout>

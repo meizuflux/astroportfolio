@@ -6,13 +6,9 @@
 
 /* Body */
 
-html {
-    font-size: 62.5%; // So that root size becomes 10px
-    font-family: $font-family-base;
-}
-
 body {
     // $font-size-base must be a rem value
+    font-family: $font-family-base;
     font-size: $font-size-base;
     line-height: 1.618;
     max-width: 38em;
@@ -221,3 +217,11 @@ label, legend, fieldset {
     margin-bottom: .5rem;
     font-weight: 600;
 }
+
+/* my additions */
+
+ul {
+    margin-left: 0;
+    padding-left: 50px;
+}
+

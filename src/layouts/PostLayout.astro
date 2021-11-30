@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ViewCounter from "../components/Views.svelte"
 import { getReadingTime, formatDate } from "../utils";
 
 const { content } = Astro.props;
@@ -14,7 +13,7 @@ const {title, description, tags, created, modified, astro} = content;
     .h-stack {
         display: flex;
         justify-content: space-between;
-    }   
+    }
 </style>
 
 <BaseLayout title={title} description={description}>

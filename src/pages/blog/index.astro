@@ -7,12 +7,8 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.mo
 
 const posts = sortByYear(sortedPosts)
 ---
-<style>
-ul {margin-left: 0; padding-left: 50px;}
-
-</style>
 <BaseLayout title="Blog">
-    <h1 style="text-align: center;">Blog</h1>
+    <h1 style="text-align: center;">blog</h1>
 
     {(Object.keys(posts).sort((a, b) => b-a)).map((key, index) => (
         <h2>{key}</h2>
