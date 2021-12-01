@@ -5,23 +5,21 @@ import { formatDate, sortByYear } from "../../utils"
 var allPosts, sortedPosts
 
 export async function getStaticPaths({paginate, rss}) {
-  allPosts = Astro.fetchContent('./*.md');
-  console.log(allPosts)
-  sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
+    allPosts = Astro.fetchContent('./*.md');
+    sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
 
-  // Generate an RSS feed from this collection of posts.
-  // NOTE: This is disabled by default, since it requires `buildOptions.site` to be set in your "astro.config.mjs" file.
-  //   rss({
-  //     title: 'Don’s Blog',
-  //     description: 'An example blog on Astro',
-  //     customData: `<language>en-us</language>`,
-  //     items: sortedPosts.map(item => ({
-  //       title: item.title,
-  //       description: item.description,
-  //       link: item.url,
-  //       pubDate: item.date,
-  //     })),
-  //   });
+    rss({
+        title: "meiuflux's blog",
+        description: 'the blog that does be mine',
+        customData: `<language>en-us</language>`,
+        items: sortedPosts.map(item => ({
+            title: item.title,
+            description: item.description,
+            link: item.url,
+            pubDate: item.modified,
+        })),
+        dest: "/blog/feed.xml"
+    });
 
   // Return a paginated collection of paths for all posts
   return paginate(sortedPosts, {pageSize: 999});
