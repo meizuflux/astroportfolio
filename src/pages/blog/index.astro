@@ -2,8 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { formatDate, sortByYear } from "../../utils"
 
-const allPosts = Astro.fetchContent("./*.md");
-const sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
+var allPosts = Astro.fetchContent("./*.md");
+var sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
 
 const posts = sortByYear(sortedPosts)
 ---

@@ -1,0 +1,25 @@
+---
+/*
+    need this to generate an rss feed, there isn't really another way from what I understand
+*/
+
+export async function getStaticPaths({rss}) {
+    const allPosts = Astro.fetchContent("./*.md");
+    const sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
+
+    rss({
+        title: 'meizuflux’s Blog',
+        description: "My personal blog that I'll try to maybe post to",
+        customData: `<language>en-us</language>`,
+        items: sortedPosts.map(item => ({
+            title: item.title,
+            description: item.description,
+            link: item.url,
+            pubDate: item.created,
+        })),
+        dest: "/blog/feed.xml",
+    });
+    return []
+}
+---
+
