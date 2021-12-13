@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getReadingTime, formatDate, makeRequest } from "../../lib";
+import { Markdown } from "astro/components"
+
+export async function getStaticPaths() {
+    const { articles } = await makeRequest(
+        `query AllArticles {
+            articles(orderBy: published_DESC) {
+                title
+                description
+                content
+                slug
+                published
+            }
+        }`
+    )
+
+    return articles.map(post => (
+            {
+                params: {slug: post.slug}, props: {post}
+            }
+        )
+    )
+}
+
+const { post } = Astro.props;
+const { title, description, content, slug, published } = post;
+---
+
+<style>
+    .h-stack {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<BaseLayout title={title} description={description}>
+    <div style="text-align: center;">
+        <h1 style="margin-bottom: 0.5rem">{title}</h1>
+        <p style="margin-bottom: 0">{description}</p>
+    </div>
+    
+    <div class="h-stack">
+        <p>{formatDate(published)}</p>
+        <p>{getReadingTime(content)} min read</p>
+    </div>
+
+    <article>
+        <Markdown content={content} />
+    </article>
+
+    <script src="https://giscus.app/client.js"
+        data-repo="meizuflux/astroportfolio"
+        data-repo-id="R_kgDOGXnCxw"
+        data-category-id="DIC_kwDOGXnCx84B_-9C"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</BaseLayout>
+

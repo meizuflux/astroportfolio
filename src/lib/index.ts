@@ -13,11 +13,11 @@ export const formatDate = (date: Date): string => {
     return `${mo} ${da}, ${ye}`
 }
 
-export const sortByYear = (arr, criteria) => {
+export const sortByYear = (arr) => {
 	return arr.reduce(function (obj, item) {
 
 		// Check if the criteria is a function to run on the item or a property of it
-		var key = new Date(item.modified).getFullYear()
+		var key = new Date(item.published).getFullYear()
 
 		// If the key doesn't exist yet, create it
 		if (!obj.hasOwnProperty(key)) {
@@ -32,3 +32,26 @@ export const sortByYear = (arr, criteria) => {
 
 	}, {});
 };
+
+
+export const makeRequest = async (query, variables = {}) => {
+    const resp = await fetch(import.meta.env.PUBLIC_ENDPOINT, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.PUBLIC_TOKEN}`
+        },
+        body: JSON.stringify({
+            query,
+            variables,
+        }),
+    })
+    const json = await resp.json()
+
+    if (json.errors) {
+        console.error(json.errors)
+        throw new Error('Failed to fetch API')
+    }
+
+    return json.data
+}

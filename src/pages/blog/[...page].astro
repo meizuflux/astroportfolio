@@ -1,28 +1,34 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
-import { formatDate, sortByYear } from "../../utils"
-
-var allPosts, sortedPosts
+import { formatDate, sortByYear, makeRequest } from "../../lib"
 
 export async function getStaticPaths({paginate, rss}) {
-    allPosts = Astro.fetchContent('./*.md');
-    sortedPosts = allPosts.sort((a, b) => new Date(b.modified) - new Date(a.modified));
+    const { articles } = await makeRequest(
+        `query AllArticles {
+            articles(orderBy: published_DESC) {
+                title
+                description
+                slug
+                published
+            }
+        }`
+    )
 
     rss({
         title: "meiuflux's blog",
         description: 'the blog that does be mine',
         customData: `<language>en-us</language>`,
-        items: sortedPosts.map(item => ({
-            title: item.title,
-            description: item.description,
-            link: item.url,
-            pubDate: item.modified,
+        items: articles.map(a => ({
+            title: a.title,
+            description: a.description,
+            link: `/blog/${a.slug}`,
+            pubDate: new Date(a.published),
         })),
         dest: "/blog/feed.xml"
     });
 
   // Return a paginated collection of paths for all posts
-  return paginate(sortedPosts, {pageSize: 999});
+  return paginate(articles, {pageSize: articles.length});
 }
 
 const { page } = Astro.props;
@@ -36,7 +42,7 @@ const posts = sortByYear(page.data)
         <ul>
             {posts[key].map(p => (
                 <li>
-                    <a href={p.url}>{p.title}</a> — <time datetime>{formatDate(p.modified)}</time>
+                    <a href=`/blog/${p.slug}`>{p.title}</a> — <time datetime>{formatDate(p.published)}</time>
                 </li>
             ))}
         </ul>

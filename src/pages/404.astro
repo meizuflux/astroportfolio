@@ -1,11 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+import { makeRequest } from "../lib"
 
-const posts = Astro.fetchContent("./blog/*.md")
-const latestPost = allPosts.sort((a, b) => new Date(b.created) - new Date(a.created))[0];
-console.log(latestPost)
+const { articles } = await makeRequest(
+    `query MostRecentArticle {
+        articles(first: 1, orderBy: published_DESC) {
+            slug
+        }
+    }`
+)
+const latestPost = articles[0]
 ---
 <BaseLayout title="404" description="Ooh, this doesn't look like the right page.">
     <h1>Hey, it looks like you got lost.</h1>
-    <p>Use the links on the navbar to view the pages of this site, or view my <a href={latestPost.url}>latest blog post</p>
+    <p>Use the links on the navbar to view the pages of this site, or view my <a href=`/blog/${latestPost.slug}`>latest blog post</p>
 </BaseLayout>
