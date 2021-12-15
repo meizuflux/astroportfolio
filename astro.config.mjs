@@ -10,7 +10,6 @@
 export default /** @type {import('astro').AstroUserConfig} */ ({
     buildOptions: {
         site: "https://meizuflux.com",
-        pageUrlFormat: 'file'
     },
     devOptions: {
         trailingSlash: "ignore"
