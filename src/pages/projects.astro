@@ -1,20 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
 
-
 const projects = {
     "websites": [
         {
-            "name": "this website",
+            "name": "meizuflux.com",
             "url": "https://meizuflux.com",
             "repo": "https://github.com/meizuflux/astroportfolio",
-            "description": "built using Astrojs and Sakura CSS with a custom theme cause I can't style at all"
+            "stack": [["Astro", "https://astro.build"], ["SakuraCSS", "https://github.com/oxalorg/sakura"], ["GraphCMS", "https://graphcms.com"], ["Cloudflare Pages", "https://pages.cloudflare.com"]],
+            "description": "This is the website that you are currently on. I use this site as a blog, portfolio, and place to experiment with new technology."
         },
         {
-            "name": "my url shortner",
+            "name": "mzf.one",
             "url": "https://mzf.one",
             "repo": "https://github.com/meizuflux/mzf.one",
-            "description": "custom url shortner that I had some fun building. Frontend is built with SolidJS and Bootstrap, while the backend is made with Starlette and SQLite"
+            "stack": [["SolidJS", "https://www.solidjs.com/"], ["Starlette", "https://www.starlette.io/"], ["Bootstrap 5", "https://getbootstrap.com/"], ["SQLite3", "https://www.sqlite.org/"]],
+            "description": "This URL shortner is a privacy friendly app that I had a lot of fun making. It's made with a JS frontend that is served by the backend, and could currently maybe use some upkeeping."
         }
     ],
     "others": [
@@ -22,7 +23,8 @@ const projects = {
             "name": "FastAPI Example",
             "url": null,
             "repo": "https://github.com/meizuflux/simple-fastapi",
-            "description": "Had some fun learning all the semantics of FastAPI"
+            "stack": [["FastAPI", "https://fastapi.tiangolo.com"]],
+            "description": "This is a simple FastAPI example project that showcases the many documentation features FastAPI offers."
         }
     ]
 }
@@ -36,7 +38,9 @@ const projects = {
         <ul>
             {projects[key].map(p => (
                 <li>
-                    {p.url ? <a href={p.url}>{p.name}</a> : p.name} [{p.repo ? <a href={p.repo}>Repo</a> : "Private"}] — {p.description}
+                    {p.url ? <a href={p.url}>{p.name}</a> : p.name} [{p.repo ? <a href={p.repo}>Repo</a> : "Private"}] 
+                    ({p.stack.map(s => <a href={s[1]}>{s[0]}</div>).reduce((acc, x) => acc === null ? x : <>{acc}, {x}</>, null)})
+                    <br />{p.description}
                 </li>
             ))}
         </ul>
