@@ -1,6 +1,8 @@
 ---
 const links = [
-    {"name": "rss", "url": "/blog/feed.xml"}
+    {"name": "rss", "url": "/blog/feed.xml"},
+    {"name": "scoresaber", "url": "https://scoresaber.com/u/3032736043471367"},
+    {"name": "discord server", "url": "https://discord.gg/"}
 ]
 const socials = [
     {"name": "github", "url": "https://github.com/meizuflux"},
@@ -12,7 +14,7 @@ const socials = [
 <footer>
     copyright 2021 - {new Date().getFullYear()} meizuflux
     <br />
-    misc [ {links.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (links.length - 1) ? ", " : ''}))} ]
+    links [ {links.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (links.length - 1) ? ", " : ''}))} ]
     <br />
     socials [ {socials.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (socials.length - 1) ? ", " : ''}))} ]
 </footer>
