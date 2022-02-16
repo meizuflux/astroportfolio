@@ -39,7 +39,7 @@ const projects = {
             {projects[key].map(p => (
                 <li>
                     {p.url ? <a href={p.url}>{p.name}</a> : p.name} [{p.repo ? <a href={p.repo}>Repo</a> : "Private"}] 
-                    ({p.stack.map(s => <a href={s[1]}>{s[0]}</div>).reduce((acc, x) => acc === null ? x : <>{acc}, {x}</>, null)})
+                    ({p.stack.map(s => <a href={s[1]}>{s[0]}</a>).reduce((acc, x) => acc === null ? x : <>{acc}, {x}</>, null)})
                     <br />{p.description}
                 </li>
             ))}
