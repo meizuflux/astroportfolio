@@ -9,10 +9,6 @@
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
     buildOptions: {
-        pageUrlFormat: "file",
         site: "https://meizuflux.com",
-    },
-    devOptions: {
-        trailingSlash: "ignore"
-    },
+    }
 });
