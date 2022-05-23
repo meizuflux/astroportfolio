@@ -14,7 +14,11 @@ const socials = [
 <footer>
     copyright 2021 - {new Date().getFullYear()} meizuflux
     <br />
-    links [ {links.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (links.length - 1) ? ", " : ''}))} ]
+    links [ {links.map((link, i: number) => (
+        <a href={link.url}>{link.name}</a>{i != links.length - 1 ? ", " : ""}
+    ))} ]
     <br />
-    socials [ {socials.map((p, i) => (<a href={p.url}>{p.name}</a>{i < (socials.length - 1) ? ", " : ''}))} ]
+    socials [ {socials.map((social, i: number) => (
+        <a href={social.url}>{social.name}</a>{i != socials.length - 1 ? ", " : ""}
+    ))} ]
 </footer>
